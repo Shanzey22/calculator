@@ -8,7 +8,7 @@
         }
         .calculator{
             width:18rem;
-            height:35rem;
+            height:37rem;
             background:hsl(208,28%,35%);
             background:linear-gradient(to,top,hsl(208,30%,35%),hsl(208,30%,40%));
             margin:0 auto;
@@ -46,35 +46,17 @@
             font-family:Pirulen;
     
         }
-        .screen{
+        .input-screen{
             width:100%;
-            height:4rem;
+            height:5rem;
             background:hsl(190,20%,88%);
             border-radius:4px;
             box-shadow:inset 0 0 5px black;
             margin:1em 0;
             color:black;
+            font-size: 1.5rem;
         }
-        .screen .input{
-            font-family:'Scientific Calculator LCD',monospace;
-            font-size:1rem;
-            position:relative;
-            top:12px;
-            left:12px;
-        
-        }
-        .screen .main-display{
-            font-family:'Segment7Standard',monospace;
-            font-size:2rem;
-            text-align:right;
-            vertical-align:bottom;
-          width:275.2px;
-            display:block;
-            position:absolute;
-        padding:.4rem;
-        overflow-x:hidden;
-            
-        }
+       
         button{
           text-align:center;
           cursor:pointer;
@@ -139,7 +121,7 @@
   line-height:70px;
   position:absolute;
   left:38%;
-  top:185px;
+  top:215px;
   border-radius:125px;
   text-transform: uppercase;
   font-size:10px;
@@ -274,9 +256,8 @@ button span.sup{
         <span class="logo">Casio</span>
         <span class="model">fx-82MS</span>
         <span class="svpam">S-V.P.A.M</span>
-        <div class="screen">
-          <div class="input">Developer</div>
-          <div class="main-display">WHITE CODER</div>
+        <div> <input type="text" id="input" class="input-screen" />
+         
         </div>
         <div class="modifiers">
           <button class="shift center-shift" tabindex="1"></button>
@@ -298,57 +279,79 @@ button span.sup{
           <td><button class="frac center-shift">a<span class="sup">b</span>/<span class="xxs">c</span></button></td>
           <td><button class=>&radic;</button></td>
           <td><button class="square">x<span class="sup">2</span></button></td>
-          <td><button class="pow center-shift">^</button></td>
-          <td><button class="log center-shift">log </button></td>
-          <td><button class="ln">ln </button></td>
+          <td><button class="pow center-shift" onclick="handlekeypress('^')">^</button></td>
+          <td><button class="log center-shift" onclick="handlekeypress('log')">log </button></td>
+          <td><button class="ln" onclick="handlekeypress('ln')">ln </button></td>
         </tr>
         <tr>
           <td><button class="minus">(&minus;)</button></td>
-          <td><button class="deg">&deg;&prime;&Prime; </button></td>
-          <td><button class="hyp">hyp</button></td>
-          <td><button class="sin">sin</button></td>
-          <td><button class="cos">cos</button></td>
-          <td><button class="tan">tan</button></td>
+          <td><button class="deg" >&deg;&prime;&Prime; </button></td>
+          <td><button class="hyp" onclick="handlekeypress('hyp')">hyp</button></td>
+          <td><button class="sin" onclick="handlekeypress('sin')">sin</button></td>
+          <td><button class="cos" onclick="handlekeypress('cos')">cos</button></td>
+          <td><button class="tan" onclick="handlekeypress('tan')">tan</button></td>
         </tr>
         <tr>
           <td><button class="rcl center-shift">RCL </button></td>
           <td><button class="eng center-shift">ENG </button></td>
-          <td><button class="open-paren">( </button></td>
-          <td><button class="close-paren">) </button></td>
+          <td><button class="open-paren" onclick="handlekeypress('(')">( </button></td>
+          <td><button class="close-paren" onclick="handlekeypress(')')">) </button></td>
           <td><button class="comma">, </button></td>
           <td><button class="mem-plus">M+</button></td>
         </tr>
  </table>
  <table class="basic-keys">
   <tr>
-    <td><button>7</button> </td>
-    <td><button >8 </button></td>
-    <td><button >9 </button></td>
-    <td><button class="pink del center-shift">DEL</button></td>
-    <td><button class="pink ac center-shift">AC</button></td>
+    <td><button onclick="handlekeypress('7')">7</button> </td>
+    <td><button onclick="handlekeypress('8')">8 </button></td>
+    <td><button onclick="handlekeypress('9')">9 </button></td>
+    <td><button class="pink del center-shift" onclick="handlekeypress('DEL')">DEL</button></td>
+    <td><button class="pink ac center-shift" onclick="handlekeypress('clear')"">AC</button></td>
  </tr>
  <tr>
- <td><button >4 </button></td>
- <td><button >5 </button></td>
- <td><button >6 </button></td>
- <td><button>x</button></td>
- <td><button>&divide;</button></td>
+ <td><button onclick="handlekeypress('4')">4 </button></td>
+ <td><button onclick="handlekeypress('5')">5 </button></td>
+ <td><button onclick="handlekeypress('6')">6 </button></td>
+ <td><button onclick="handlekeypress('*')">x</button></td>
+ <td><button onclick="handlekeypress('/')">&divide;</button></td>
   </tr>
   <tr>
-    <td><button class="one center-shift">1 </button></td>
-    <td><button class="two center-shift">2</button> </button></td>
-    <td><button >3 </button></td>
-    <td><button >+</button></td>
-    <td><button >-</button></td>
+    <td><button class="one center-shift" onclick="handlekeypress('1')">1 </button></td>
+    <td><button class="two center-shift" onclick="handlekeypress('2')">2</button></td>
+    <td><button onclick="handlekeypress('3')">3 </button></td>
+    <td><button onclick="handlekeypress('+')">+</button></td>
+    <td><button onclick="handlekeypress('-')">-</button></td>
   </tr>
   <tr>
-    <td><button class="zero center-shift">0</button></td>
-    <td><button class="period center-shift">.</button> </button></td>
-    <td><button class="exp center-shift">EXP </button></td>
-    <td><button class="ans center-shift">Ans</button> </button></td>
-    <td><button class="equals center-shift">= </button></td>
+    <td><button class="zero center-shift" onclick="handlekeypress('0')">0</button></td>
+    <td><button class="period center-shift" onclick="handlekeypress('.')">.</button> </button></td>
+    <td><button class="exp center-shift" onclick="handlekeypress('EXP')">EXP </button></td>
+    <td><button class="ans center-shift" onclick="handlekeypress('Ans')">Ans</button> </button></td>
+    <td><button class="equals center-shift" onclick="handlekeypress('=')">= </button></td>
  </tr>
 </table>
 </div>
+<script>
+  function handlekeypress(key)
+  {
+ 
+    const inputScreen=document.getElementById("input");
+    if(key=='=')
+    {
+    inputScreen.value =eval(inputScreen.value);
+   
+   }
+   else if(key=="clear")
+   {
+    inputScreen.value=" ";
+   }
+
+   else { 
+ 
+    inputScreen.value += key;
+    }
+  }
+
+</script>
    </body>
 </html>
